@@ -23,15 +23,6 @@
 - Language: GDScript  
 - Platform: Windows / Linux / HTML5 (optional)
 
-## 📂 Folder Structure
-/OrbitRaiders/
-├── scenes/
-├── scripts/
-├── assets/
-├── project.godot
-├── README.md
-
-
 ## 📦 Future Plans
 
 - Boss fights  
