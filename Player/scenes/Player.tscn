@@ -1,0 +1,680 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Player/assets/TinySpaceShip_shard1.png" type="Texture" id=1]
+[ext_resource path="res://Player/assets/TinySpaceShip.png" type="Texture" id=2]
+[ext_resource path="res://Player/assets/iddqd.png" type="Texture" id=3]
+[ext_resource path="res://Player/assets/TinySpaceShip_shard3.png" type="Texture" id=4]
+[ext_resource path="res://Player/assets/TinySpaceShip_shard2.png" type="Texture" id=5]
+[ext_resource path="res://Player/scripts/flash.shader" type="Shader" id=6]
+[ext_resource path="res://Player/scripts/alpha_flash.shader" type="Shader" id=7]
+[ext_resource path="res://Player/scripts/CrossOverIndicator.gd" type="Script" id=8]
+[ext_resource path="res://Player/scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://Player/assets/thrust_spritesheet.png" type="Texture" id=10]
+[ext_resource path="res://Player/assets/laser_gradient.tres" type="Gradient" id=11]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 6 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_amount = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "off"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "on"
+length = 0.333333
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BrokenShipSprite1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BrokenShipSprite2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BrokenShipSprite3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BrokenShipSprite1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, 0 ), Vector2( 38.0429, 43.0486 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BrokenShipSprite1:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 124.243 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BrokenShipSprite2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, 0 ), Vector2( 66.0746, -37.7092 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BrokenShipSprite2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 18.4429 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BrokenShipSprite3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, 0 ), Vector2( -45.3846, -36.0407 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("BrokenShipSprite3:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 34.8482 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipSprite:material:shader_param/flash_amount")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BrokenShipSprite1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BrokenShipSprite2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BrokenShipSprite3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShipSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ShipSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BrokenShipSprite1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BrokenShipSprite2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BrokenShipSprite3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BrokenShipSprite3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BrokenShipSprite3:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BrokenShipSprite2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BrokenShipSprite2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BrokenShipSprite1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("BrokenShipSprite1:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("ShipSprite:material:shader_param/flash_amount")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("ShipSprite:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BrokenShipSprite1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BrokenShipSprite2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BrokenShipSprite3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BrokenShipSprite3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BrokenShipSprite3:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BrokenShipSprite2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BrokenShipSprite2:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BrokenShipSprite1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("BrokenShipSprite1:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 7 )
+shader_param/flash_color = Color( 0.486275, 0.486275, 0.486275, 0 )
+shader_param/flash_amount = 1.0
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/flash_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.5
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/flash_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 4
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -3.82796, 22.8403, 34.215, -0.185677, -4.8291, -22.7111, -12.8381, -0.0188217 )
+
+[node name="ShipSprite" type="Sprite" parent="."]
+self_modulate = Color( 0.992157, 0.992157, 1, 1 )
+material = SubResource( 1 )
+position = Vector2( 12, 0 )
+rotation = 1.5708
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="GodmodeSprite" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.992157, 0.992157, 1, 1 )
+material = SubResource( 1 )
+rotation = 1.5708
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="ThrusterSprite" type="Sprite" parent="."]
+position = Vector2( -33.522, -1.205 )
+rotation = 1.5708
+scale = Vector2( 0.0717794, 0.0717794 )
+z_index = -2
+texture = ExtResource( 10 )
+hframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ThrusterSprite"]
+autoplay = "off"
+anims/off = SubResource( 2 )
+anims/on = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ThrusterSprite"]
+volume_db = -35.0
+
+[node name="BrokenShipSprite1" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 1 )
+
+[node name="BrokenShipSprite2" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 5 )
+
+[node name="BrokenShipSprite3" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Destroyed = SubResource( 4 )
+anims/Flashing = SubResource( 5 )
+anims/HyperSpace = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="LaserSpawnPoint" type="Node2D" parent="."]
+position = Vector2( 41, 0 )
+
+[node name="LaserLine" type="Line2D" parent="LaserSpawnPoint"]
+points = PoolVector2Array( 0, 0, 50, 0 )
+width = 2.0
+default_color = Color( 0.172549, 0.941176, 0.0862745, 0.258824 )
+gradient = ExtResource( 11 )
+
+[node name="LaserLineContinued" type="Line2D" parent="."]
+width = 2.0
+default_color = Color( 0.172549, 0.941176, 0.0862745, 0.258824 )
+gradient = ExtResource( 11 )
+
+[node name="CrossOverIndicator" type="Sprite" parent="."]
+material = SubResource( 9 )
+position = Vector2( 100, 0 )
+rotation = 1.5708
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+script = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CrossOverIndicator"]
+anims/Idle = SubResource( 10 )
+anims/flashing = SubResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0

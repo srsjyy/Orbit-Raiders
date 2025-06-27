@@ -1,0 +1,203 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "BaseSatellite",
+"language": "GDScript",
+"path": "res://Satellite/scripts/BaseSatellite.gd"
+}, {
+"base": "Node2D",
+"class": "BaseSpawner",
+"language": "GDScript",
+"path": "res://Main/scripts/BaseSpawner.gd"
+}, {
+"base": "Sprite",
+"class": "CrossOverIndicator",
+"language": "GDScript",
+"path": "res://Player/scripts/CrossOverIndicator.gd"
+}, {
+"base": "Node2D",
+"class": "ExplosionManager",
+"language": "GDScript",
+"path": "res://Main/scripts/ExplosionManager.gd"
+}, {
+"base": "Control",
+"class": "GUI",
+"language": "GDScript",
+"path": "res://GUI/scripts/GUI.gd"
+}, {
+"base": "Node",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://Main/scripts/GameManager.gd"
+}, {
+"base": "TextureRect",
+"class": "LifeRect",
+"language": "GDScript",
+"path": "res://GUI/scripts/LifeRect.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/scripts/Player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Projectile/Projectile.gd"
+}, {
+"base": "BaseSatellite",
+"class": "Satellite",
+"language": "GDScript",
+"path": "res://Satellite/scripts/Satellite.gd"
+}, {
+"base": "BaseSatellite",
+"class": "SatelliteComponent",
+"language": "GDScript",
+"path": "res://Satellite/scripts/SatelliteComponent.gd"
+}, {
+"base": "BaseSatellite",
+"class": "SatelliteShard",
+"language": "GDScript",
+"path": "res://Satellite/scripts/SatelliteShard.gd"
+}, {
+"base": "BaseSpawner",
+"class": "Satellite_Spawner",
+"language": "GDScript",
+"path": "res://Main/scripts/SatelliteSpawner.gd"
+}, {
+"base": "Node",
+"class": "ScoreManager",
+"language": "GDScript",
+"path": "res://Main/scripts/ScoreManager.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "UFO",
+"language": "GDScript",
+"path": "res://UFO/UFO.gd"
+}, {
+"base": "BaseSpawner",
+"class": "UFOSpawner",
+"language": "GDScript",
+"path": "res://Main/scripts/UFOSpawner.gd"
+} ]
+_global_script_class_icons={
+"BaseSatellite": "",
+"BaseSpawner": "",
+"CrossOverIndicator": "",
+"ExplosionManager": "",
+"GUI": "",
+"GameManager": "",
+"LifeRect": "",
+"Player": "",
+"Projectile": "",
+"Satellite": "",
+"SatelliteComponent": "",
+"SatelliteShard": "",
+"Satellite_Spawner": "",
+"ScoreManager": "",
+"UFO": "",
+"UFOSpawner": ""
+}
+
+[application]
+
+config/name="OrbitRaiders"
+run/main_scene="res://Main/scenes/GameManager.tscn"
+config/icon="res://Player/assets/TinySpaceShip.png"
+
+[display]
+
+window/size/height=768
+window/size/resizable=false
+
+[input]
+
+forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+turn_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+turn_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+hyperspace={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+cheat_godmode={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":71,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+reset={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+kill={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Projectile"
+2d_physics/layer_3="Asteroid"
+2d_physics/layer_4="UFO"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
