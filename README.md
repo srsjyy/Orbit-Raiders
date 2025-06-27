@@ -24,4 +24,22 @@
 - Platform: Windows / Linux / HTML5 (optional)
 
 ## 📂 Folder Structure
+/OrbitRaiders/
+├── scenes/
+├── scripts/
+├── assets/
+├── project.godot
+├── README.md
+
+
+## 📦 Future Plans
+
+- Boss fights  
+- Power-ups  
+- Visual polish and SFX  
+- Web export for browser play
+
+---
+
+**Created by Sarah Grace Cornelio** ✨
 
